@@ -1,42 +1,42 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="container">
-  <div class="row">
-    <div class="col-8">
-      <h3>Patient Value</h3>
-      <p>How much $ do you make on a typical patient</p>
+    <div class="row">
+      <div class="col-8">
+        <h3>Patient Value</h3>
+      </div>
+      <div class="col-4">
+        <input [(ngModel)]="patientValue" placeholder="$2000">
+      </div>
     </div>
-    <div class="col-4"><input type="text" name="blah" /></div>
-  </div>
-  <div class="row">
-    <div class="col-8">
-      <h3>How Many Patients Do You See Per Week?</h3>
+    <div class="row">
+      <div class="col-8">
+        <h3>How Many Patients Do You See Per Week?</h3>
+      </div>
+      <div class="col-4">
+        <input [(ngModel)]="currPatientsPerWeek" placeholder="12">
+      </div>
     </div>
-    <div class="col-4"><input type="text" name="blah" /></div>
-  </div>
-  <div class="row">
-    <div class="col-8">
-      <h3>How Many Would You LIKE To See Per Week?</h3>
+    <div class="row">
+      <div class="col-8">
+        <h3>How Many Would You LIKE To See Per Week?</h3>
+      </div>
+      <div class="col-4">
+        <input [(ngModel)]="desiredPatentsPerWeek" placeholder="20">
+      </div>
     </div>
-    <div class="col-4"><input type="text" name="blah" /></div>
-  </div>
-  <div class="row">
-    <div class="col-8">
-      <h3>How many new patients do you gain each month? </h3>
+    <div class="row">
+      <div class="col-8">
+        <h3>How many new patients do you gain each month? </h3>
+      </div>
+      <div class="col-4">
+        <input [(ngModel)]="deltaPatientsPerWeek" placeholder="1">
+      </div>
     </div>
-    <div class="col-4"><input type="text" name="blah" /></div>
-  </div>
+  <app-algo-form
+    [patientValue]="patientValue"
+    [currPatientsPerWeek]="currPatientsPerWeek"
+    [deltaPatientsPerWeek]="deltaPatientsPerWeek"
+    [desiredPatientsPerWeek]="desiredPatientsPerWeek">
+  </app-algo-form>
+
 </div>
-<ngx-charts-area-chart-stacked
-  [view]="view"
-  [scheme]="colorScheme"
-  [results]="multi"
-  [gradient]="gradient"
-  [xAxis]="showXAxis"
-  [yAxis]="showYAxis"
-  [legend]="showLegend"
-  [showXAxisLabel]="showXAxisLabel"
-  [showYAxisLabel]="showYAxisLabel"
-  [xAxisLabel]="xAxisLabel"
-  [yAxisLabel]="yAxisLabel"
-  (select)="onSelect($event)">
-</ngx-charts-area-chart-stacked>

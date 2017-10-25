@@ -1,26 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnChanges,
+         SimpleChanges, Input, ViewChild
+       } from '@angular/core';
+import { AlgoService } from './algo-service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-algo-form',
+  template: `
+    <ngx-charts-area-chart-stacked
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="multi"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      (select)="onSelect($event)">
+    </ngx-charts-area-chart-stacked>
+  `
 })
-export class AppComponent {
-  title = 'app';
-  single: any[] = [
-    {
-      'name': 'Germany',
-      'value': 8940000
-    },
-    {
-      'name': 'USA',
-      'value': 5000000
-    },
-    {
-      'name': 'France',
-      'value': 7200000
-    }
-  ];
+export class AppAlgoFormComponent implements OnChanges {
+  @Input() patientValue = Number;
+  @Input() currPatientsPerWeek = Number;
+  @Input() deltaPatientsPerWeek = Number;
+  @Input() desiredPatientsPerWeek = Number;
   multi: any[] = [
     {
       'name': 'Germany',
@@ -81,12 +87,31 @@ export class AppComponent {
   // line, area
   autoScale = true;
 
-  // constructor() {
-  //   Object.assign(this, {single, multi});
-  // }
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('ngOnChange');
+    console.log(new AlgoService().compute());
+    this.multi = new AlgoService().compute();
+  }
+}
 
-  onSelect(event) {
-    console.log(event);
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'app';
+  patientValue: Number;
+  currPatientsPerWeek: Number;
+  deltaPatientsPerWeek: Number;
+  desiredPatientsPerWeek: Number;
+  @ViewChild(AppAlgoFormComponent) childView: AppAlgoFormComponent;
+
+  constructor() {
+    this.patientValue = 300;
+    this.currPatientsPerWeek = 5;
+    this.deltaPatientsPerWeek = 10;
+    this.desiredPatientsPerWeek = 3;
   }
 
 }
