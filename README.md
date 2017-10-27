@@ -1,4 +1,6 @@
-# AngularWidget
+# NH Calculator
+
+A calculator to estimate the value of how much value an online marketing service can add to a medical practice's bottom line.git
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.7.
 
