@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+
+.bg-dark-green {
+  background-color: #052e00;
+}
+
+.bg-clay {
+  background-color: #764134;
+}
+
+.bg-light-brown {
+  background-color: #ad8350;
+}
+
+.bg-yellow {
+  background-color: #f3de2c;
+}
+
+.bg-light-green {
+  background-color: #7cb518;
+}
+
+.btn-primary {
+  -webkit-box-shadow: 0 7px 13px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+  box-shadow: 0 7px 13px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+}

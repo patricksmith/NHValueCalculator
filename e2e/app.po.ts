@@ -1,11 +1,39 @@
-import { browser, by, element } from 'protractor';
+import { browser, by, element, Key } from 'protractor';
 
 export class AppPage {
   navigateTo() {
     return browser.get('/');
   }
 
-  getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+  getMoney() {
+    return element(by.css('#money')).getText();
+  }
+
+  getTime() {
+    return element(by.css('#time')).getText();
+  }
+
+  getPatients() {
+    return element(by.css('#patients')).getText();
+  }
+
+  changeDesiredPatients() {
+    element(by.css('#desired-patients'))
+      .sendKeys(Key.LEFT);
+  }
+
+  changePatientValue() {
+    element(by.css('#patient-value'))
+      .sendKeys(Key.RIGHT);
+  }
+
+  changeStartingPatients() {
+    element(by.css('#starting-patients'))
+      .sendKeys(Key.RIGHT);
+  }
+
+  changeGrowthRate() {
+    element(by.css('#growth-rate'))
+      .sendKeys(Key.RIGHT);
   }
 }
